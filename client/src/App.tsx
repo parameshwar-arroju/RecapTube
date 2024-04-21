@@ -1,11 +1,24 @@
-// import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Navbar } from "./components/Navbar";
+import { Home } from "./components/Home";
+import { Signup } from "./components/Signup";
+import { Signin } from "./components/Signin";
+import { ThemeProvider } from "./components/ThemeProvider";
 
 function App() {
-    // const [count, setCount] = useState(0);
-
     return (
         <>
-            <div className="text-2xl">RecapTube</div>
+            <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+                <Router>
+                    <Routes>
+                        <Route path="/" element={<Navbar />}>
+                            <Route index element={<Home />} />
+                            <Route path="/signup" element={<Signup />} />
+                            <Route path="/signin" element={<Signin />} />
+                        </Route>
+                    </Routes>
+                </Router>
+            </ThemeProvider>
         </>
     );
 }
