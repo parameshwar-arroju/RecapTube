@@ -10,8 +10,30 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.summarizeModel = void 0;
+require("dotenv/config");
 const summarizeModel = (transcript) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log("Summarize Api");
-    return "Summarize Model";
+    const { GoogleGenerativeAI } = require("@google/generative-ai");
+    // Access your API key as an environment variable (see "Set up your API key" above)
+    const genAI = new GoogleGenerativeAI(process.env.API_KEY);
+    try {
+        function run() {
+            return __awaiter(this, void 0, void 0, function* () {
+                // For text-only input, use the gemini-pro model
+                const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+                const prompt = `Create a short summary derived from a YouTube transcript, encapsulating the central ideas and arguments presented within.
+            
+            Transcript: ${transcript}`;
+                const result = yield model.generateContent(prompt);
+                const response = yield result.response;
+                const text = response.text();
+                return text;
+            });
+        }
+        const shortSummary = run();
+        return shortSummary;
+    }
+    catch (error) {
+        console.error(error);
+    }
 });
 exports.summarizeModel = summarizeModel;
