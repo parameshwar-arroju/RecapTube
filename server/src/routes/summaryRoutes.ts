@@ -18,7 +18,8 @@ const extractVideoId = (videoUrl: string): string => {
     throw new Error('Invalid YouTube URL');
 };
 
-SummaryRouter.post("/", UrlValidate, async (req: Request, res: Response) => {
+
+SummaryRouter.post("/short", UrlValidate, async (req: Request, res: Response) => {
     const { videoUrl } = req.body;
 
     try {
@@ -36,3 +37,4 @@ SummaryRouter.post("/", UrlValidate, async (req: Request, res: Response) => {
         res.status(400).json({ error: error.message });
     }
 });
+

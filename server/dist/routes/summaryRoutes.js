@@ -27,13 +27,17 @@ const extractVideoId = (videoUrl) => {
     }
     throw new Error('Invalid YouTube URL');
 };
-exports.SummaryRouter.post("/", urlValidator_1.UrlValidate, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+let transcriptText = "";
+exports.SummaryRouter.post("/short/:id", urlValidator_1.UrlValidate, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { videoUrl } = req.body;
     try {
         // Extract the video ID from the validated YouTube URL
-        const videoId = extractVideoId(videoUrl);
+        // const videoId = extractVideoId(videoUrl);
+        const videoId = req.params.id;
         const transcript = yield (0, transcript_1.transcriptApi)(videoId);
         const summary = yield (0, summary_1.summarizeModel)(transcript);
+        transcriptText = transcript;
+        console.log(transcriptText);
         // Respond with the video ID
         res.json({
             videoId: videoId,
@@ -45,3 +49,8 @@ exports.SummaryRouter.post("/", urlValidator_1.UrlValidate, (req, res) => __awai
         res.status(400).json({ error: error.message });
     }
 }));
+exports.SummaryRouter.get("/transcript", (req, res) => {
+    res.json({
+        transcript: transcriptText
+    });
+});
