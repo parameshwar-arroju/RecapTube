@@ -11,7 +11,7 @@ export const UrlValidate = (req: Request, res: Response, next: NextFunction) => 
             },
             { message: "Invalid Youtube URL" }
         );
-        urlSchema.parse(videoUrl);
+        urlSchema.safeParse(videoUrl);
         next();
     } catch (error) {
         return res.status(411).json({

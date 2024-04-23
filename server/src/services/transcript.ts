@@ -1,13 +1,13 @@
 import axios from "axios";
 import "dotenv/config";
-export const transcriptApi = async (videoId: string): Promise<any> => {
+export const transcriptApi = async (videoId: string | undefined): Promise<any> => {
     const params = {
         video_id: videoId,
         lang: "en",
     };
     const headers = {
         "X-RapidAPI-Key": process.env.RapidAPI_Key,
-        "X-RapidAPI-Host": process.env.rapidAPI_Host,
+        "X-RapidAPI-Host": process.env.RapidAPI_Host,
     }
     try {
         const response = await axios.get("https://youtube-transcriptor.p.rapidapi.com/transcript", {
@@ -21,5 +21,6 @@ export const transcriptApi = async (videoId: string): Promise<any> => {
         return subtitles;
     } catch (error) {
         console.error(error);
+        return [];
     }
 };
