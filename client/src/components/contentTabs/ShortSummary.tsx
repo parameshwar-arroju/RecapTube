@@ -11,9 +11,11 @@ export const ShortSummary = () => {
     useEffect(() => {
         const gg = async () => {
             if (shortSummary == '') {
-                const response = await axios.get("https://sum-server.100xdevs.com/todos")
-                console.log(response.data)
-                setShortSummary(response.data.todos)
+                const response = await axios.post("https://recaptube.onrender.com/summary/short", {
+                    videoUrl: youtubeLink
+                })
+                console.log(response)
+                setShortSummary(response.data.summary)
             }
         }
         gg();
@@ -23,7 +25,7 @@ export const ShortSummary = () => {
             {console.log("rerender")}
             {shortSummary ? (
                 <>
-                    <div className="h-full"> {shortSummary[0].title}</div>
+                    <div className="h-full"> {shortSummary}</div>
                 </>
             ) : (
                 <>
