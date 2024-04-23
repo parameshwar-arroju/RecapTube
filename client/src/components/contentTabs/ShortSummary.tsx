@@ -1,22 +1,28 @@
-import { shortSummaryAtom } from "@/atom/store/atom"
+import { shortSummaryAtom, youtubeLinkAtom } from "@/atom/store/atom"
 import { useEffect } from "react"
-import { useRecoilState } from "recoil"
+import { useRecoilState, useRecoilValue } from "recoil"
 import { Skeleton } from "@/components/ui/skeleton"
+import axios from "axios"
 
 export const ShortSummary = () => {
     const [shortSummary, setShortSummary] = useRecoilState(shortSummaryAtom)
+    const youtubeLink = useRecoilValue(youtubeLinkAtom)
+
     useEffect(() => {
         const gg = async () => {
             if (shortSummary == '') {
-                console.log("backend call")
-                setShortSummary("response")
+                const response = await axios.post("https://recaptube.onrender.com/summary/short", {
+                    videoUrl: youtubeLink
+                })
+                console.log(response)
+                setShortSummary(response.data.summary)
             }
         }
         gg();
     }, [])
-    console.log("re-render")
     return (
         <>
+            {console.log("rerender")}
             {shortSummary ? (
                 <>
                     <div className="h-full"> {shortSummary}</div>
@@ -28,13 +34,9 @@ export const ShortSummary = () => {
                             <Skeleton className="h-4 w-full" />
                             <Skeleton className="h-4 w-full" />
                             <Skeleton className="h-4 w-full" />
-                            <Skeleton className="h-4 w-full" />
-                            <Skeleton className="h-4 w-full" />
                             <Skeleton className="h-4 w-3/4" />
                         </div>
                         <div className="space-y-2 w-full" >
-                            <Skeleton className="h-4 w-full" />
-                            <Skeleton className="h-4 w-full" />
                             <Skeleton className="h-4 w-full" />
                             <Skeleton className="h-4 w-full" />
 
