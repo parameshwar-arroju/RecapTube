@@ -9,7 +9,8 @@ export const ShortSummary = () => {
         const gg = async () => {
             if (shortSummary == '') {
                 console.log("backend call")
-                setShortSummary("response")
+
+                setShortSummary("This video guides viewers on setting up a Rust development environment in Neovim, enhancing their coding experience with syntax highlighting, LSP support, debugging, and more. The setup involves installing Rust and Rust tools, configuring Neovim with nvimdap and nvimdap UI for debugging, and using code lldb for debugging functionality. By leveraging Mason, a package manager for Neovim LSP installations, and LSP Saga for connecting LSP functionality, the setup provides an efficient and accessible workflow for Rust developers. The video highlights the importance of debuggers in compiled languages like Rust and demonstrates how to effectively integrate them into Neovim.")
             }
         }
         gg();
