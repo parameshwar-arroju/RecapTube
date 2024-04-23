@@ -1,17 +1,22 @@
 import { atom } from "recoil"
 
 
+export const youtubeLinkAtom = atom({
+    key: "youtubeLinkAtom",
+    default: ""
+})
+
 export const shortSummaryAtom = atom({
     key: "shortSummaryAtom",
-    default: ''
+    default: ""
 })
 
 export const longSummaryAtom = atom({
     key: "longSummaryStom",
-    default: ''
+    default: ""
 })
 
 export const keyInsightsAtom = atom({
     key: "keyInsightsatom",
-    default: ''
+    default: ""
 })

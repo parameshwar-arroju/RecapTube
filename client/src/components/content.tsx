@@ -19,9 +19,9 @@ export const Content = () => {
     }, [])
     return (
         <>
-            <RecoilRoot>
+            
 
-                <section className="w-full h-fit pt-8 max-w-screen-2xl mx-auto">
+                <section className="w-full h-fit pt-12 max-w-screen-2xl mx-auto">
                     <div className="px-4 md:px-6 h-fit">
                         <div className="grid items-start gap-6 lg:grid-cols-[400px_1fr] h-fit px-4 lg:gap-12 xl:grid-cols-[550px_1fr]">
                             <div className="aspect-video  space-y-4">
@@ -71,7 +71,6 @@ export const Content = () => {
                         </div>
                     </div>
                 </section>
-            </RecoilRoot>
 
         </>
     );
