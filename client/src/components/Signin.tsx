@@ -136,18 +136,18 @@ import { Eye } from "lucide-react"
 
 export const Signin = () => {
 
-    const [redirect, setRedirect] = useState(false)
+    // const [redirect, setRedirect] = useState(false)
     const [showPassword, setShowPassword] = useState(false)
 
 
-    async function HandleSignInForm(e) {
+    async function HandleSignInForm(e: any) {
         e.preventDefault();
         const data = new FormData(e.target);
         const username = data.get("username");
         const password = data.get("password");
 
-        data.set("username", username);
-        data.set("password", password);
+        // data.set("username", username);
+        // data.set("password", password);
         const res = await fetch("http://localhost:3000/user/signin", {
             method: "POST",
             body: JSON.stringify({
@@ -162,7 +162,7 @@ export const Signin = () => {
             const response = await res.json();
             localStorage.setItem("token", response.token);
             localStorage.setItem("author", response.username);
-            setRedirect(true);
+            // setRedirect(true);
         } else {
             alert("Wrong Credentials");
         }

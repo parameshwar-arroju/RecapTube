@@ -153,7 +153,6 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useState } from "react"
 import { Link } from "react-router-dom"
-import { Icons } from "./Icons"
 import { Eye } from "lucide-react"
 
 export const Signup = () => {

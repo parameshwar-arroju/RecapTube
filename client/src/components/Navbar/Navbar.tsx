@@ -1,5 +1,5 @@
-import { Outlet, Link, useNavigate, useLocation } from "react-router-dom";
-import { useState, useEffect } from 'react';
+import { Outlet, Link, useLocation } from "react-router-dom";
+
 import { MainNav } from "./MainNav";
 import { MobileNav } from "./MobileNav";
 import { cn } from "@/lib/utils";
@@ -11,17 +11,17 @@ export const Navbar = () => {
 
     const { pathname } = useLocation();
 
-    const [isAuth, setIsAuth] = useState(false)
-    const [menuOpen, setMenuOpen] = useState(false);
-    const navigate = useNavigate()
+    // const [isAuth, setIsAuth] = useState(false)
+    // const [menuOpen, setMenuOpen] = useState(false);
+    // const navigate = useNavigate()
 
-    useEffect(() => {
-        const token = localStorage.getItem('token');
+    // useEffect(() => {
+    //     const token = localStorage.getItem('token');
 
-        if (token) {
-            setIsAuth(true)
-        }
-    }, [])
+    //     if (token) {
+    //         setIsAuth(true)
+    //     }
+    // }, [])
 
     // function HandleSignout() {
     //     localStorage.removeItem('token');

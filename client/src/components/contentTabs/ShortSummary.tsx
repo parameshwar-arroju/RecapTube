@@ -1,31 +1,32 @@
-import { shortSummaryAtom, youtubeLinkAtom } from "@/atom/store/atom"
+import { shortAIWrteAtom, shortSummaryAtom } from "@/atom/store/atom"
 import { useEffect } from "react"
 import { useRecoilState, useRecoilValue } from "recoil"
 import { Skeleton } from "@/components/ui/skeleton"
-import axios from "axios"
+import AIWriter from "react-aiwriter"
 
 export const ShortSummary = () => {
-    const [shortSummary, setShortSummary] = useRecoilState(shortSummaryAtom)
-    const youtubeLink = useRecoilValue(youtubeLinkAtom)
+    const shortSummary = useRecoilValue(shortSummaryAtom)
+    const [AIWrite, setAIWrite] = useRecoilState(shortAIWrteAtom)
 
     useEffect(() => {
-        const gg = async () => {
-            if (shortSummary == '') {
-                const response = await axios.post("https://recaptube.onrender.com/summary/short", {
-                    videoUrl: youtubeLink
-                })
-                console.log(response)
-                setShortSummary(response.data.summary)
-            }
-        }
-        gg();
+        setAIWrite(prev => prev + 1)
     }, [])
     return (
         <>
-            {console.log("rerender")}
             {shortSummary ? (
                 <>
-                    <div className="h-full"> {shortSummary}</div>
+                    {AIWrite >= 2 ? (
+                        <div>
+                            {shortSummary}
+                        </div>
+                    ) : (
+                        <>
+                            <AIWriter>
+                                {shortSummary}
+                            </AIWriter>
+                        </>
+                    )}
+
                 </>
             ) : (
                 <>
@@ -47,8 +48,6 @@ export const ShortSummary = () => {
 
                 </>
             )}
-
-
         </>
     )
 }

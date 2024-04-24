@@ -1,5 +1,4 @@
 import { Link, useLocation } from "react-router-dom"
-import { siteConfig } from "@/config/site"
 import { Icons } from "../Icons"
 import { cn } from "@/lib/utils"
 
