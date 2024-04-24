@@ -7,6 +7,7 @@ import { youtubeLinkAtom } from "@/atom/store/atom";
 import { CheckBadgeIcon, XCircleIcon } from "@heroicons/react/16/solid";
 import { Icons } from "./Icons";
 
+// for dots
 
 export const Home = () => {
 
