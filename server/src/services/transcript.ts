@@ -14,11 +14,14 @@ export const transcriptApi = async (videoId: string | undefined): Promise<any> =
             params,
             headers,
         });
+        const title = response.data[0].title;
+        const duration = response.data[0].lengthInSeconds;
+        const thumbnail = response.data[0].thumbnails[4].url;
         const data = response.data.map((item: any) => item.transcription);
-        const subtitles = data.flatMap((transcription: any) =>
+        const transcript = data.flatMap((transcription: any) =>
             transcription.map((item: any) => item.subtitle).join(" ")
         );
-        return subtitles;
+        return { title, transcript, thumbnail, duration };
     } catch (error) {
         console.error(error);
         return [];
