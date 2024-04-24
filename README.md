@@ -31,8 +31,6 @@ RecapTube provides users with summarized versions of YouTube videos using advanc
   - Express.js
   - MongoDB
   
-- **AI and NLP:**
-  - (Add details about the specific AI/NLP libraries or APIs used)
 
 ## Getting Started
 
@@ -45,17 +43,6 @@ To run RecapTube locally, follow these steps:
 5. Start the frontend development server by running `npm start` in the `client` directory.
 6. Access RecapTube in your web browser at `http://localhost:3000`.
 
-## Contributing
-
-Contributions are welcome! If you'd like to contribute to RecapTube, please fork the repository and submit a pull request with your changes.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
-## Contact
-
-For questions or inquiries about RecapTube, feel free to contact the project maintainer at [your-email@example.com](mailto:your-email@example.com).
 
 ---
 
