@@ -26,24 +26,30 @@ SummaryRouter.post("/short", UrlValidate, extractVideoId, async (req: CustomRequ
             const summary = await summarizeModel(prompts.short, id.transcript || "");
             // Respond with the video ID
             res.json({
+                title: id.title,
                 videoId: videoId,
+                thumbnail: id.thumbnail,
+                duration: id.duration,
                 summary: summary,
-                thumbnail: id.thumbnail
             });
         }
         else {
-            const { transcript, thumbnail } = await transcriptApi(videoId);
+            const { title, transcript, thumbnail, duration } = await transcriptApi(videoId);
             const video = await Video.create({
+                title: title,
                 videoid: videoId,
+                thumbnail: thumbnail,
+                duration: duration,
                 transcript: transcript[0],
-                thumbnail: thumbnail
             })
             const summary = await summarizeModel(prompts.short, video.transcript || "");
             // Respond with the video ID
             res.json({
+                title: title,
                 videoId: videoId,
+                thumbnail: thumbnail,
+                duration: duration,
                 summary: summary,
-                thumbnail: thumbnail
             });
         }
     } catch (error: any) {

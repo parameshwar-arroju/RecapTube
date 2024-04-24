@@ -1,12 +1,15 @@
 import mongoose from "mongoose";
 import "dotenv/config";
-import { string } from "zod";
+import { number, string } from "zod";
 
 const MoungUrl = process.env.MONGO_URL || "";
 
 mongoose.connect(MoungUrl);
 
 const videoSchema = new mongoose.Schema({
+    title: {
+        type: String,
+    },
     videoid: {
         type: String,
     },
@@ -14,6 +17,9 @@ const videoSchema = new mongoose.Schema({
         type: String,
     },
     thumbnail: {
+        type: String,
+    },
+    duration: {
         type: String,
     }
 });
