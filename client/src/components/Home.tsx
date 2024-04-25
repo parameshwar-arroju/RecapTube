@@ -19,7 +19,6 @@ export const Home = () => {
     const [isEmpty, setIsEmpty] = useState(false)
 
     const HandleLink = async () => {
-        // const youtubeRegex = /^(https?:/ /)?(www.) ? (youtube.com | youtu.? be) /.+ /;
         const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+/
         if (youtubeLink == '') {
             setIsEmpty(true);
