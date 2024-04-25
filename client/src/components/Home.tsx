@@ -19,22 +19,25 @@ export const Home = () => {
     const [isEmpty, setIsEmpty] = useState(false)
 
     const HandleLink = async () => {
+        const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+/
         if (youtubeLink == '') {
             setIsEmpty(true);
         } else {
             setValidLink(false)
             setInvalidLink(false)
-            const randomValue1 = Math.random() > 0.5;
-            const randomValue2 = !randomValue1;
             setSpinner(true)
-
-            await new Promise((r) => setTimeout(r, 3000))
+            await new Promise((r) => setTimeout(r, 1000))
             setSpinner(false)
-            setValidLink(randomValue1)
-            setInvalidLink(randomValue2)
-            setShowContent(true)
+            if (youtubeRegex.test(youtubeLink)) {
+                setValidLink(true);
+                setShowContent(true)
+            } else {
+                setInvalidLink(true);
+            }
+
             setIsEmpty(false);
         }
+
 
     }
 

@@ -4,6 +4,7 @@ import { useEffect } from "react"
 import { useRecoilState, useRecoilValue } from "recoil"
 import { Skeleton } from "../ui/skeleton"
 import AIWriter from "react-aiwriter"
+import Markdown from "react-markdown"
 
 
 export const KeyInsights = () => {
@@ -35,15 +36,19 @@ export const KeyInsights = () => {
             {keyInsights ? (
                 <>
                     {AIWrite >= 2 ? (
-                        <div>
-                            {keyInsights}
+                        <div className="prose-base prose prose-li:marker:text-foreground prose-li:text-foreground prose-strong:text-foreground prose-p:text-foreground">
+                            <Markdown>
+                                {keyInsights}
+                            </Markdown>
                         </div>
                     ) : (
-                        <>
+                        <div className="prose prose-li:marker:text-foreground prose-li:text-foreground prose-strong:text-foreground prose-p:text-foreground">
                             <AIWriter>
-                                {keyInsights}
+                                <Markdown>
+                                    {keyInsights}
+                                </Markdown>
                             </AIWriter>
-                        </>
+                        </div>
                     )}
 
                 </>
