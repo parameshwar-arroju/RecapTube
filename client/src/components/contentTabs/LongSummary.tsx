@@ -4,11 +4,13 @@ import { useRecoilState, useRecoilValue } from "recoil"
 import { Skeleton } from "../ui/skeleton"
 import axios from "axios"
 import AIWriter from "react-aiwriter"
+import Markdown from "react-markdown"
 
 export const LongSummary = () => {
     const [longSummary, setLongSummary] = useRecoilState(longSummaryAtom)
     const [AIWrite, setAIWrite] = useRecoilState(longAIWrteAtom)
     const youtubeLink = useRecoilValue(youtubeLinkAtom)
+
     useEffect(() => {
         const fetchData = async () => {
             if (longSummary == '') {
@@ -33,15 +35,19 @@ export const LongSummary = () => {
             {longSummary ? (
                 <>
                     {AIWrite >= 2 ? (
-                        <div>
-                            {longSummary}
+                        <div className="prose prose-li:marker:text-foreground prose-li:text-foreground prose-strong:text-foreground prose-p:text-foreground">
+                            <Markdown>
+                                {longSummary}
+                            </Markdown>
                         </div>
                     ) : (
-                        <>
+                        <div className="prose prose-li:marker:text-foreground prose-li:text-foreground prose-strong:text-foreground prose-p:text-foreground">
                             <AIWriter>
-                                {longSummary}
+                                <Markdown>
+                                    {longSummary}
+                                </Markdown>
                             </AIWriter>
-                        </>
+                        </div>
                     )}
 
                 </>

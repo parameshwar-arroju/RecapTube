@@ -1,6 +1,5 @@
 import { atom } from "recoil"
 
-
 export const shortAIWrteAtom = atom({
     key: "shortAIWrteAtom",
     default: 0
