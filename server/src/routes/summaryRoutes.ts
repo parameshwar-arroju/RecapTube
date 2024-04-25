@@ -8,11 +8,11 @@ import { Video } from "../models/db";
 export const SummaryRouter = Router();
 
 const prompts = {
-    short: `create a short summary derived from a YouTube transcript, encapsulating the central ideas and arguments presented within.`,
+    short: `Generate a short summary based on the provided transcript. Ensure clarity, conciseness, and coherence in your summary in 150 words.`,
 
-    long: `create a long summary derived from a YouTube transcript, encapsulating the central ideas and arguments presented within.`,
+    long: `Generate a long summary based on the provided transcript.Ensure clarity, conciseness, and coherence in your summary in 200-300 words.`,
 
-    keyinsight: `create a keyinsights derived from a YouTube transcript, encapsulating the central ideas and arguments presented within.`
+    keyinsight: `Analyzing the provided transcript, identify and discuss the key insights, themes, or significant points presented. Consider the overarching message, main arguments, recurring motifs, and any unique perspectives or revelations that emerge from the text. Craft an insightful analysis that delves into the core ideas conveyed and their implications within the context of the transcript.`
 }
 
 SummaryRouter.post("/short", UrlValidate, extractVideoId, async (req: CustomRequest, res: Response) => {

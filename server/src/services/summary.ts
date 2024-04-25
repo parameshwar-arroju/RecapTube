@@ -3,12 +3,20 @@ import "dotenv/config";
 export const summarizeModel = async (desc: string,transcript: string): Promise<any> => {
     const { GoogleGenerativeAI } = require("@google/generative-ai");
 
+    const generationConfig = {
+        stopSequences: ["red"],
+        maxOutputTokens: 500,
+        temperature: 0.9,
+        topP: 0.1,
+        topK: 16,
+    };
+    
     // Access your API key as an environment variable (see "Set up your API key" above)
     const genAI = new GoogleGenerativeAI(process.env.API_KEY);
     try {
         async function run() {
             // For text-only input, use the gemini-pro model
-            const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+            const model = genAI.getGenerativeModel({ model: "gemini-pro", generationConfig });
 
             const prompt = `${desc}
             Transcript: ${transcript}`
