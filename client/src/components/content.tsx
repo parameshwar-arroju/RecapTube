@@ -143,21 +143,21 @@ export const Content = () => {
 
                 <TabsContent value="short-summary">
                   <Card>
-                    <CardContent className="scrollbar  flex flex-col p-5 pr-6 pt-2 text-pretty h-[25rem] overflow-auto ">
+                    <CardContent className="scrollbar flex flex-col p-5 pr-6 pt-2 text-pretty h-[25rem] overflow-auto ">
                       <ShortSummary />
                     </CardContent>
                   </Card>
                 </TabsContent>
                 <TabsContent value="long-summary">
                   <Card>
-                    <CardContent className="scrollbar  space-y-2 p-6 text-pretty h-[25rem] overflow-auto">
+                    <CardContent className="scrollbar space-y-2 p-6 text-pretty h-[25rem] overflow-auto">
                       <LongSummary />
                     </CardContent>
                   </Card>
                 </TabsContent>
                 <TabsContent value="key-insights">
                   <Card>
-                    <CardContent className="scrollbar  space-y-2 p-6 text-pretty h-[25rem] overflow-auto">
+                    <CardContent className="scrollbar space-y-2 p-6 text-pretty h-[25rem] overflow-auto">
                       <KeyInsights />
                     </CardContent>
                   </Card>
