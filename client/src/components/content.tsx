@@ -89,9 +89,9 @@ export const Content = () => {
   return (
     <>
       <section className="w-full h-fit pt-12 max-w-screen-2xl mx-auto">
-        <div className="px-4 md:px-6 h-fit">
+        <div className="md:px-6 h-fit">
           <div className="grid items-start gap-6 lg:grid-cols-[400px_1fr] h-fit px-4 lg:gap-12 xl:grid-cols-[550px_1fr]">
-            <div className="aspect-video space-y-4 pt-10">
+            <div className="aspect-video space-y-4 pt-10 ">
               {imageLink ? (
                 <>
                   <div className="flex flex-col  items-center">
@@ -103,7 +103,7 @@ export const Content = () => {
                             className="aspect-video max-h-60 object-cover mx-auto self-center overflow-hidden rounded-xl"
                             src={imageLink}
                           />
-                          <p className="text-center absolute bottom-1 right-1 px-1 leading-none py-1  rounded-sm backdrop-brightness-[.35]  text-base font-medium">{formatDuration(duration)}</p>
+                          <p className="text-center absolute bottom-1 right-1 px-1 leading-none py-1  rounded-sm backdrop-brightness-[.35] tracking-wider text-base font-medium">{formatDuration(duration)}</p>
                         </div>
 
                         <div className="space-y-2">
@@ -118,12 +118,12 @@ export const Content = () => {
                 </>
               ) : (
                 <>
-                  <div className="flex flex-col  items-center">
+                  <div className="flex flex-col items-center">
                     <div className="space-y-3">
-                      <Skeleton className="h-[240px] w-[426px] rounded-xl" />
-                      <div className="space-y-2 pr-4">
-                        <Skeleton className="h-4 w-full" />
-                        <Skeleton className="h-4 w-2/5" />
+                      <Skeleton className="h-[222px] w-[394px] rounded-xl" />
+                      <div className="space-y-2 pr-4 pb-2 px-3">
+                        <Skeleton className="h-5 w-full" />
+                        <Skeleton className="h-5 w-2/5" />
                       </div>
                     </div>
 
@@ -142,26 +142,26 @@ export const Content = () => {
 
                 <TabsContent value="short-summary">
                   <Card>
-                    <CardContent className="scrollbar flex flex-col p-5 pr-6 pt-2 text-pretty h-[25rem] overflow-auto ">
+                    <CardContent className="scrollbar flex flex-col p-6 px-4 md:px-6 text-pretty h-[25rem] overflow-auto ">
                       <ShortSummary />
                     </CardContent>
                   </Card>
                 </TabsContent>
                 <TabsContent value="long-summary">
                   <Card>
-                    <CardContent className="scrollbar space-y-2 p-6 text-pretty h-[25rem] overflow-auto">
+                    <CardContent className="scrollbar space-y-2 p-6 px-4 md:px-6 text-pretty h-[25rem] overflow-auto">
                       <LongSummary />
                     </CardContent>
                   </Card>
                 </TabsContent>
                 <TabsContent value="key-insights">
                   <Card>
-                    <CardContent className="scrollbar space-y-2 p-6 text-pretty h-[25rem] overflow-auto">
+                    <CardContent className="scrollbar space-y-2 p-6 px-4 md:px-6 text-pretty h-[25rem] overflow-auto">
                       <KeyInsights />
                     </CardContent>
                   </Card>
                 </TabsContent>
-                <div className="absolute bottom-4 right-6">
+                <div className="absolute bottom-4 right-4">
                   <Button onClick={CopyToClipboard} className="py-1 px-2">
                     <Clipboard className="h-5 w-5 text-end cursor-pointer" />
                   </Button>
