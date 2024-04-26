@@ -44,10 +44,10 @@ export const Home = () => {
     return (
         <>
             {console.log(youtubeLink)}
-            <section key="1" className="flex flex-col h-[calc(100dvh-5rem)] max-w-screen-2xl mx-auto pt-12">
-                <div className=" mx-auto max-w-screen-lg px-12">
+            <section key="1" className="flex flex-col h-[calc(100dvh-5rem)] max-w-screen-2xl mx-auto pt-10">
+                <div className=" mx-auto max-w-screen-lg px-4 md:px-12">
                     <div className="flex flex-col items-center justify-center ">
-                        <div className="space-y-2 text-center">
+                        <div className="space-y-4 text-center">
                             <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">RecapTube</h1>
                             <p className="max-w-[800px] text-gray-500 md:text-xl lg:text-lg dark:text-gray-400">
                                 Summarize YouTube Videos in Seconds
@@ -55,22 +55,20 @@ export const Home = () => {
                             </p>
                         </div>
                         <div className="w-full mt-6 max-w-screen-lg space-y-2 md:flex md:space-y-0 md:space-x-2">
-                            <div className="w-full md:flex-1 md:flex">
+                            <div className="w-full md:flex-1 flex">
                                 <Input className={`w-full md:flex-1 ${spinner || validLink || invalidLink ? "border-r-0 rounded-tr-none rounded-br-none" : ""}`} onChange={(e) => setYoutubeLink(e.target.value)} placeholder="Paste Youtube video link here..." type="text" />
 
-                                {spinner && <div className={`h-full px-2 border border-l-0 border-input rounded-tr-md rounded-br-md ${spinner ? "" : "hidden"}`}>
-                                    <Icons.spinner className={`h-full w-4 self-center text-destructive" ${spinner ? "animate-spin" : ""}`} />
+                                {spinner && <div className={`h-9 px-2 border border-l-0 border-input rounded-tr-md rounded-br-md ${spinner ? "" : "hidden"}`}>
+                                    <Icons.spinner className={`h-9 w-4 self-center text-destructive" ${spinner ? "animate-spin" : ""}`} />
                                 </div>}
 
-                                {validLink && <div className={`h-full px-2 border border-l-0 border-input rounded-tr-md rounded-br-md ${validLink ? "" : "hidden"}`}>
-                                    <CheckBadgeIcon className={`h-full w-4 self-center text-destructive" ${validLink ? "" : ""}`} />
+                                {validLink && <div className={`h-9 px-2 border border-l-0 border-input rounded-tr-md rounded-br-md ${validLink ? "" : "hidden"}`}>
+                                    <CheckBadgeIcon className={`h-9 w-4 self-center text-destructive" ${validLink ? "" : ""}`} />
                                 </div>}
 
-                                {invalidLink && <div className={`h-full px-2 border border-l-0 border-input rounded-tr-md rounded-br-md ${invalidLink ? "" : "hidden"}`}>
-                                    <XCircleIcon className={`h-full w-4 self-center text-destructive" ${invalidLink ? "" : ""}`} />
+                                {invalidLink && <div className={`h-9 px-2 border border-l-0 border-input rounded-tr-md rounded-br-md ${invalidLink ? "" : "hidden"}`}>
+                                    <XCircleIcon className={`h-9 w-4 self-center text-destructive" ${invalidLink ? "" : ""}`} />
                                 </div>}
-
-
                             </div>
 
                             <Button type="submit" disabled={showContent} onClick={HandleLink} className={"w-full sm:w-full md:w-auto " + (showContent ? "cursor-not-allowed" : "")}>Generate summary</Button>

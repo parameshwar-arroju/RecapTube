@@ -88,11 +88,10 @@ export const Content = () => {
 
   return (
     <>
-      {console.log(currentTabIndex)}
       <section className="w-full h-fit pt-12 max-w-screen-2xl mx-auto">
         <div className="px-4 md:px-6 h-fit">
           <div className="grid items-start gap-6 lg:grid-cols-[400px_1fr] h-fit px-4 lg:gap-12 xl:grid-cols-[550px_1fr]">
-            <div className="aspect-video space-y-4 ">
+            <div className="aspect-video space-y-4 pt-10">
               {imageLink ? (
                 <>
                   <div className="flex flex-col  items-center">
@@ -108,7 +107,7 @@ export const Content = () => {
                         </div>
 
                         <div className="space-y-2">
-                          <p className="text-xl font-semibold">{title}</p>
+                          <p className="text-xl px-3 font-semibold">{title}</p>
                         </div>
                       </div>
 
