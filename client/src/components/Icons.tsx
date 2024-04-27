@@ -3,9 +3,9 @@ type IconProps = React.HTMLAttributes<SVGElement>
 export const Icons = {
   logo: (props: IconProps) => (
     <svg {...props} width="256px" height="256px" viewBox="0 0 15.36 15.36" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M6.72 7.68v-1.92l1.6 0.96 1.6 0.96 -1.6 0.96 -1.6 0.96z" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" />
-      <path d="M3.607 11.753A5.741 5.741 0 0 0 7.68 13.44c3.181 0 5.76 -2.579 5.76 -5.76S10.861 1.92 7.68 1.92c-1.59 0 -3.03 0.645 -4.073 1.687C3.076 4.138 1.92 5.44 1.92 5.44" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
-      <path d="M1.92 2.88v2.56h2.56" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M6.72 7.68v-1.92l1.6 0.96 1.6 0.96 -1.6 0.96 -1.6 0.96z" fill="none" stroke="currentColor" strokeWidth="1" strokeLinejoin="round" />
+      <path d="M3.607 11.753A5.741 5.741 0 0 0 7.68 13.44c3.181 0 5.76 -2.579 5.76 -5.76S10.861 1.92 7.68 1.92c-1.59 0 -3.03 0.645 -4.073 1.687C3.076 4.138 1.92 5.44 1.92 5.44" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M1.92 2.88v2.56h2.56" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
 
     </svg>
   ),

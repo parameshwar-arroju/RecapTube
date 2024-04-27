@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { Content } from "./content";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
@@ -37,13 +37,16 @@ export const Home = () => {
 
             setIsEmpty(false);
         }
+    }
 
-
+    const HandleChange = async (e: ChangeEvent<HTMLInputElement>) => {
+        setYoutubeLink(e.target.value)
+        setInvalidLink(false)
+        setValidLink(false)
     }
 
     return (
         <>
-            {console.log(youtubeLink)}
             <section key="1" className="flex flex-col h-[calc(100dvh-5rem)] max-w-screen-2xl mx-auto pt-10">
                 <div className=" mx-auto max-w-screen-lg px-4 md:px-12">
                     <div className="flex flex-col items-center justify-center ">
@@ -56,7 +59,7 @@ export const Home = () => {
                         </div>
                         <div className="w-full mt-6 max-w-screen-lg space-y-2 md:flex md:space-y-0 md:space-x-2">
                             <div className="w-full md:flex-1 flex">
-                                <Input className={`w-full md:flex-1 ${spinner || validLink || invalidLink ? "border-r-0 rounded-tr-none rounded-br-none" : ""}`} onChange={(e) => setYoutubeLink(e.target.value)} placeholder="Paste Youtube video link here..." type="text" />
+                                <Input className={`w-full md:flex-1 ${spinner || validLink || invalidLink ? "border-r-0 rounded-tr-none rounded-br-none" : ""}`} onChange={(e) => HandleChange(e)} placeholder="Paste Youtube video link here..." type="text" />
 
                                 {spinner && <div className={`h-9 px-2 border border-l-0 border-input rounded-tr-md rounded-br-md ${spinner ? "" : "hidden"}`}>
                                     <Icons.spinner className={`h-9 w-4 self-center text-destructive" ${spinner ? "animate-spin" : ""}`} />
@@ -71,7 +74,7 @@ export const Home = () => {
                                 </div>}
                             </div>
 
-                            <Button type="submit" disabled={showContent} onClick={HandleLink} className={"w-full sm:w-full md:w-auto " + (showContent ? "cursor-not-allowed" : "")}>Generate summary</Button>
+                            <Button type="submit" disabled={(validLink || invalidLink)} onClick={HandleLink} className={"w-full sm:w-full md:w-auto " + ((validLink || invalidLink) ? "cursor-not-allowed" : "cursor-default")}>Generate summary</Button>
                         </div>
                         {invalidLink && <p className="text-destructive self-start pl-4 pt-1">Invalid URL !</p>}
                         {isEmpty && <p className="text-destructive self-start pl-4 pt-1">Input is empty!</p>}

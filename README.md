@@ -41,7 +41,7 @@ To run RecapTube locally, follow these steps:
 3. Install dependencies by running `npm install` in both the `client` and `server` directories.
 4. Start the backend server by running `npm start` in the `server` directory.
 5. Start the frontend development server by running `npm start` in the `client` directory.
-6. Access RecapTube in your web browser at `http://localhost:3000`.
+6. Access RecapTube in your web browser at `http://localhost:5173`.
 
 
 ---
