@@ -4,8 +4,6 @@ export const summarizeModel = async (desc: string,transcript: string): Promise<a
     const { GoogleGenerativeAI } = require("@google/generative-ai");
 
     const generationConfig = {
-        stopSequences: ["red"],
-        maxOutputTokens: 500,
         temperature: 0.9,
         topP: 0.1,
         topK: 16,
