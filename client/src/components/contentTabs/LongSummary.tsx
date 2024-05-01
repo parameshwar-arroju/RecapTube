@@ -6,6 +6,8 @@ import axios from "axios"
 import AIWriter from "react-aiwriter"
 import Markdown from "react-markdown"
 
+const ApiUrl = import.meta.env.VITE_API_URL;
+
 export const LongSummary = () => {
     const [longSummary, setLongSummary] = useRecoilState(longSummaryAtom)
     const [AIWrite, setAIWrite] = useRecoilState(longAIWrteAtom)
@@ -15,7 +17,7 @@ export const LongSummary = () => {
         const fetchData = async () => {
             if (longSummary == '') {
                 try {
-                    const response = await axios.post("https://recaptube.onrender.com/summary/long", {
+                    const response = await axios.post(ApiUrl + "/summary/long", {
                         videoUrl: youtubeLink
                     })
                     console.log(response)

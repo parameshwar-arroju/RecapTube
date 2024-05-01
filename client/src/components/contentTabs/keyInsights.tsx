@@ -6,6 +6,7 @@ import { Skeleton } from "../ui/skeleton"
 import AIWriter from "react-aiwriter"
 import Markdown from "react-markdown"
 
+const ApiUrl = import.meta.env.VITE_API_URL;
 
 export const KeyInsights = () => {
     const [keyInsights, setKeyInsights] = useRecoilState(keyInsightsAtom)
@@ -15,7 +16,7 @@ export const KeyInsights = () => {
         const fetchData = async () => {
             if (keyInsights == '') {
                 try {
-                    const response = await axios.post("https://recaptube.onrender.com/summary/key", {
+                    const response = await axios.post(ApiUrl + "/summary/key", {
                         videoUrl: youtubeLink
                     })
                     console.log(response)

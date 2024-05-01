@@ -11,6 +11,7 @@ import { Skeleton } from "./ui/skeleton";
 import { Clipboard } from "lucide-react";
 import { Button } from "./ui/button";
 
+const ApiUrl = import.meta.env.VITE_API_URL;
 
 
 export const Content = () => {
@@ -30,7 +31,7 @@ export const Content = () => {
     const fetchData = async () => {
       if (shortSummary == '') {
         try {
-          const response = await axios.post("https://recaptube.onrender.com/summary/short", {
+          const response = await axios.post(ApiUrl + "/summary/short", {
             videoUrl: youtubeLink
           })
           console.log(response)
