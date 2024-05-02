@@ -34,3 +34,8 @@ export const keyInsightsAtom = atom({
     key: "keyInsightsatom",
     default: ""
 })
+
+export const isErrorAtom = atom({
+    key: "isErrorAtom",
+    default: false
+})
