@@ -6,15 +6,18 @@ import { Card, CardContent } from "./ui/card";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { keyInsightsAtom, longSummaryAtom, shortSummaryAtom, youtubeLinkAtom } from "@/atom/store/atom";
+import { isErrorAtom, keyInsightsAtom, longSummaryAtom, shortSummaryAtom, youtubeLinkAtom } from "@/atom/store/atom";
 import { Skeleton } from "./ui/skeleton";
 import { Clipboard } from "lucide-react";
 import { Button } from "./ui/button";
+import { CheckIcon } from "lucide-react";
 
 const ApiUrl = import.meta.env.VITE_API_URL;
 
 
 export const Content = () => {
+
+
 
   const [shortSummary, setShortSummary] = useRecoilState(shortSummaryAtom)
   const longSummary = useRecoilValue(longSummaryAtom)
@@ -23,8 +26,9 @@ export const Content = () => {
   const [currentTabIndex, setCurrentTabIndex] = useState("short-summary");
   const [title, setTitle] = useState("")
   const [imageLink, setImageLink] = useState("")
-
+  const [isError, setIsError] = useRecoilState(isErrorAtom)
   const youtubeLink = useRecoilValue(youtubeLinkAtom)
+  const [copied, setCopied] = useState(false)
 
   const [duration, setDuration] = useState("")
   useEffect(() => {
@@ -34,13 +38,13 @@ export const Content = () => {
           const response = await axios.post(ApiUrl + "/summary/short", {
             videoUrl: youtubeLink
           })
-          console.log(response)
           setShortSummary(response.data.summary)
           setImageLink(response.data.thumbnail)
           setTitle(response.data.title)
           setDuration(response.data.duration)
         }
         catch (e) {
+          setIsError(true)
           console.error(e)
         }
       }
@@ -50,11 +54,11 @@ export const Content = () => {
   }, [])
 
   const HandleSelect = (value: string) => {
-    console.log(value)
     setCurrentTabIndex(value); // Update the current tab index
   };
 
-  const CopyToClipboard = () => {
+  const CopyToClipboard = async () => {
+    setCopied(true)
     let content = '';
 
     // Determine the content based on the selected tab
@@ -74,10 +78,17 @@ export const Content = () => {
 
     content = content.replace(/[_*~`]/g, '');
 
+
+
+
     // Copy the content to clipboard
     navigator.clipboard.writeText(content)
-      .then(() => console.log('Copied to clipboard:', content))
+      .then(() => console.log('Copied to clipboard'))
       .catch((error) => console.error('Failed to copy:', error));
+
+    await new Promise((r) => setTimeout(r, 1000))
+    setCopied(false)
+
   };
 
   const formatDuration = (totalSeconds: string) => {
@@ -86,6 +97,18 @@ export const Content = () => {
     const remainingSeconds = seconds % 60;
     return `${minutes}:${String(remainingSeconds).padStart(2, '0')}`;
   };
+
+
+  if (isError) {
+    return (
+
+      <>
+        <div>
+
+        </div>
+      </>
+    )
+  }
 
   return (
     <>
@@ -163,8 +186,14 @@ export const Content = () => {
                   </Card>
                 </TabsContent>
                 <div className="absolute bottom-4 right-4">
-                  <Button onClick={CopyToClipboard} className="py-1 px-2">
-                    <Clipboard className="h-5 w-5 text-end cursor-pointer" />
+
+                  <Button onClick={CopyToClipboard} className="py-1 px-2 transition duration-500 ease-in-out">
+                    {copied ? <CheckIcon className="h-5 w-5 text-end cursor-pointer" />
+                      :
+                      <Clipboard className="h-5 w-5 text-end cursor-pointer" />
+                    }
+
+
                   </Button>
 
                 </div>

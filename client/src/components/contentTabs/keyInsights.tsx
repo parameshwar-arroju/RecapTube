@@ -19,7 +19,6 @@ export const KeyInsights = () => {
                     const response = await axios.post(ApiUrl + "/summary/key", {
                         videoUrl: youtubeLink
                     })
-                    console.log(response)
                     setKeyInsights(response.data.summary)
                 }
 
@@ -31,7 +30,6 @@ export const KeyInsights = () => {
         }
         fetchData();
     }, [])
-    console.log("re-render")
     return (
         <>
             {keyInsights ? (

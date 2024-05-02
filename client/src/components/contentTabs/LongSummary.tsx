@@ -20,7 +20,6 @@ export const LongSummary = () => {
                     const response = await axios.post(ApiUrl + "/summary/long", {
                         videoUrl: youtubeLink
                     })
-                    console.log(response)
                     setLongSummary(response.data.summary)
                 }
                 catch (e) {
