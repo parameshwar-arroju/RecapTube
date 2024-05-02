@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from "react";
 import { Content } from "./content";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { isErrorAtom, keyInsightsAtom, longSummaryAtom, shortSummaryAtom, youtubeLinkAtom } from "@/atom/store/atom";
 import { CheckBadgeIcon, XCircleIcon } from "@heroicons/react/16/solid";
 import { Icons } from "./Icons";
