@@ -47,3 +47,10 @@ To run RecapTube locally, follow these steps:
 ---
 
 Feel free to customize this README with specific details about your project, such as installation instructions, usage examples, deployment guides, or any other relevant information.
+
+
+## Contributors
+
+<a href="https://github.com/parameshwar-arroju/RecapTube/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=parameshwar-arroju/recaptube&max=400&columns=20" />
+</a>
